@@ -23,6 +23,11 @@ class Consumidor
     private $rg;
 
     /**
+     * @ORM\Column(type="string", length=11)
+     */
+    private $cpf;
+
+    /**
      * @ORM\Column(type="string", length=50)
      */
     private $nome;
@@ -87,7 +92,7 @@ class Consumidor
         return $this->nascimento;
     }
 
-    public function setNascimento(DateTime $nascimento) {
+    public function setNascimento(\DateTime $nascimento) {
         $this->nascimento = $nascimento;
     }
  
@@ -113,5 +118,17 @@ class Consumidor
 
     public function setUsuario(Usuario $usuario) {
         $this->usuario = $usuario;
+    }
+
+    public function getCpf()
+    {
+        return $this->cpf;
+    }
+
+    public function setCpf($cpf)
+    {
+        $this->cpf = $cpf;
+
+        return $this;
     }
 }

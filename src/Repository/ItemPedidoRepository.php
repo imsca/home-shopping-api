@@ -18,7 +18,23 @@ class ItemPedidoRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, ItemPedido::class);
     }
-
+    public function findItensPedido(int $id) {
+        return $this->getEntityManager()->createQuery(
+            "SELECT item_pedido.id, 
+                    item_pedido.quantidade,
+                    item_pedido.valor preco,
+                    produto.imagem,
+                    produto.id,
+                    produto.nome
+             FROM App\Entity\ItemPedido item_pedido
+             INNER JOIN item_pedido.produto produto
+             INNER JOIN item_pedido.pedido pedido
+             WHERE pedido.id = :id
+             AND pedido.status = 0
+             "
+        )->setParameter('id', $id)
+         ->execute();
+    }
     /*
     public function findBySomething($value)
     {

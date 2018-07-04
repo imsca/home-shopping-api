@@ -18,7 +18,15 @@ class FormaPagamentoRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, FormaPagamento::class);
     }
-
+    public function findFormaByIdVarejo(int $id) {
+        return $this->getEntityManager()->createQuery(
+            'SELECT fp.id, fp.descricao
+             FROM App\Entity\FormaPagamento fp
+             WHERE fp.varejo = :id
+             ORDER BY fp.descricao ASC'
+        )->setParameter('id', $id)
+         ->execute();
+    }
     /*
     public function findBySomething($value)
     {

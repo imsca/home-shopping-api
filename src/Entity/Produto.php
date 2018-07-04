@@ -22,7 +22,7 @@ class Produto
     private $codigoBarras;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="string", length=80)
      */
     private $nome;
 
@@ -152,4 +152,5 @@ class Produto
     public function setQuantidade($quantidade) {
         $this->quantidade = $quantidade;
     }
+
 }

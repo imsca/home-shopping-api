@@ -19,16 +19,16 @@ class ProdutoRepository extends ServiceEntityRepository
         parent::__construct($registry, Produto::class);
     }
 
-    /*
-    public function findBySomething($value)
-    {
-        return $this->createQueryBuilder('p')
-            ->where('p.something = :value')->setParameter('value', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+    
+    public function findProducts(int $id) {
+        return $this->getEntityManager()->createQuery(
+            'SELECT p.id, p.nome, p.quantidade, p.preco, p.imagem, p.marca, p.categoria, v.id as varejo
+             FROM App\Entity\Produto p
+             INNER JOIN p.varejo v
+             WHERE p.varejo = :id
+             ORDER BY p.nome ASC'
+        )->setParameter('id', $id)
+         ->execute();
     }
-    */
+    
 }

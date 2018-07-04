@@ -46,6 +46,11 @@ class Varejo
      */
     private $area;
 
+    
+    /**
+     * @ORM\Column(type="string", length=512)
+     */
+    private $foto;
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Usuario")
@@ -71,13 +76,6 @@ class Varejo
         $this->cnpj = $cnpj;
     }
 
-    public function getRazao() {
-        return $this->razao;
-    }
-
-    public function setRazao($razao) {
-        $this->razao = $razao;
-    }
 
     public function getFantasia() {
         return $this->fantasia;
@@ -128,5 +126,56 @@ class Varejo
 
     public function setUsuario(Usuario $usuario) {
         $this->usuario = $usuario;
+    }
+
+    /**
+     * Get the value of nome
+     */ 
+    public function getNome()
+    {
+        return $this->nome;
+    }
+
+    /**
+     * Set the value of nome
+     *
+     * @return  self
+     */ 
+    public function setNome($nome)
+    {
+        $this->nome = $nome;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of foto
+     */ 
+    public function getFoto()
+    {
+        return $this->foto;
+    }
+
+    /**
+     * Set the value of foto
+     *
+     * @return  self
+     */ 
+    public function setFoto($foto) {
+        $this->foto = $foto;
+
+        return $this;
+    }
+
+    /**
+     * Set the value of id
+     *
+     * @return  self
+     */ 
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
     }
 }

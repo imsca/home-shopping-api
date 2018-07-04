@@ -18,7 +18,20 @@ class ConsumidorRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Consumidor::class);
     }
-
+    public function findUser($user) {
+        return $this->getEntityManager()->createQuery(
+            'SELECT c
+             FROM App\Entity\Consumidor c
+             INNER JOIN c.usuario u
+             WHERE u.login = :login
+             AND u.senha = :senha
+             ORDER BY c.id
+             '
+        )->setParameter('login', $user->login)
+         ->setParameter('senha', $user->senha)
+         ->setMaxResults(1)
+         ->getResult();
+    }
     /*
     public function findBySomething($value)
     {

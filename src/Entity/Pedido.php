@@ -20,27 +20,27 @@ class Pedido
      */
     private $id;
 
-    /* 
+    /**
      * @ORM\Column(type="datetime")
      */
     private $dataPedido;
 
-    /*
-     * @ORM\Column(type="datetime")
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $dataEntrega;
 
-    /*
+    /**
      * @ORM\Column(type="decimal", scale=2)
      */
     private $total;
 
-    /*
+    /**
      * @ORM\Column(type="boolean")
      */
     private $status;
 
-    /*
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Varejo")
      * @ORM\JoinColumn(name="varejo_id", referencedColumnName="id")
      */
@@ -73,7 +73,7 @@ class Pedido
         return $this->dataPedido;
     }
 
-    public function setDataPedido(DateTime $dataPedido) {
+    public function setDataPedido(\DateTime $dataPedido) {
         $this->dataPedido = $dataPedido;
     }
 
@@ -81,7 +81,7 @@ class Pedido
         return $this->dataEntrega;
     }
 
-    public function setDataEntrega(DateTime $dataEntrega) {
+    public function setDataEntrega(\DateTime $dataEntrega) {
         $this->dataEntrega = $dataEntrega;
     }
 
@@ -91,14 +91,6 @@ class Pedido
 
     public function setTotal($total) {
         $this->total = $total;
-    }
-
-    public function getStatus() {
-        return $this->status;
-    }
-
-    public function setStatus($status) {
-        $this->status = $status;
     }
 
     public function getVarejo() {
@@ -131,5 +123,12 @@ class Pedido
 
     public function setPagamento(Pagamento $pagamento) {
         $this->pagamento = $pagamento;
+    }
+    public function getStatus() {
+        return $this->status;
+    }
+    
+    public function setStatus($status) {
+        return $this->status = $status;
     }
 }

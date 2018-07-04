@@ -48,32 +48,26 @@ class Usuario
         $this->login = $login;
     }
 
-    public function getSenha()
-    {
+    public function getSenha() {
         return $this->senha;
     }
 
-    public function setSenha(string $senha)
-    {
+    public function setSenha(string $senha) {
         $this->senha = $senha;
     }
 
-    public function getEmail()
-    {
+    public function getEmail() {
         return $this->email;
     }
 
-    public function setEmail(string $email)
-    {
+    public function setEmail(string $email) {
         $this->email = $email;
     }
-    public function getRole()
-    {
+    public function getRole() {
         return $this->role;
     }
 
-    public function setRole(string $role)
-    {
+    public function setRole(string $role) {
         $this->role = $role;
     }
 

@@ -18,17 +18,17 @@ class PedidoRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Pedido::class);
     }
-
-    /*
-    public function findBySomething($value)
-    {
-        return $this->createQueryBuilder('p')
-            ->where('p.something = :value')->setParameter('value', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+    public function findPedidos(int $id) {
+        return $this->getEntityManager()->createQuery(
+            "SELECT p.id, p.dataPedido, p.total, p.status
+             FROM App\Entity\Pedido p
+             JOIN p.consumidor c
+             WHERE c.id = :id
+             AND p.status = 0
+             ORDER BY p.dataPedido DESC
+             "
+        )->setParameter('id', $id)
+         ->execute();
     }
-    */
+
 }
